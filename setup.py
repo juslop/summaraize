@@ -39,7 +39,7 @@ Tamil, Thai, Turkish, Ukrainian, Urdu, Vietnamese, and Welsh.
 ## Install Application
 
 ```python
-python -m pip install minutes
+python -m pip install ai-minutes
 ```
 
 ## Install FFmpeg
@@ -59,7 +59,7 @@ https://phoenixnap.com/kb/ffmpeg-windows
 ## Run
 
 ```python
-python -m minutes
+python -m ai-minutes
 ```
 
 ## UI themes
@@ -70,19 +70,19 @@ https://ttkbootstrap.readthedocs.io/en/latest/themes/
 list available themes:
 
 ```python
-python -m minutes -h
+python -m ai-minutes -h
 ```
 
 use a theme by giving theme name as an argument:
 
 ```python
-python -m minutes cyborg
+python -m ai-minutes cyborg
 ```
 
 """
 
 setup(
-    name="minutes",
+    name="ai-minutes",
     version="1.0",
     author="Jussi Löppönen",
     description="A Python library for analyzing meeting/event video recordings with cloud hosted AI.",
@@ -93,7 +93,7 @@ setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    url="https://github.com/juslop/minutes",
+    url="https://github.com/juslop/ai-minutes",
     packages=find_packages(where="src"),
     package_dir = {"": "src"},
     install_requires=["openai", "ttkbootstrap"],
