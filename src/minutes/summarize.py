@@ -73,6 +73,10 @@ class Summarize:
             logger.error(f"FFmpeg error: {output}, {error}")
             raise Exception(f"FFmpeg error, exiting: {error}")
 
+    def _report(self, value: any):
+        if self.result_queue is not None:
+            self.result_queue.put(value)
+
     def set_api_key(self, api_key: str) -> None:
         client = OpenAI(api_key=api_key)
         try:
@@ -101,7 +105,7 @@ class Summarize:
             _, error = p.communicate()
             if p.returncode != 0:
                 raise Exception(f"Failed to extract audio: {error}")
-            self.result_queue.put(15)
+            self._report(15)
             # audio needs to be chunked to match Whisper model context window
             outfile = os.path.join(tmpdirname, "out_%03d.m4a")
             cmd = ["ffmpeg", "-i", f"{audiofile}", "-f", "segment", "-segment_time", f"{chunk_time}", f"{outfile}"]
@@ -109,7 +113,7 @@ class Summarize:
             _, error = p.communicate()
             if p.returncode != 0:
                 raise Exception(f"Failed to chunk audio: {error}")
-            self.result_queue.put(30)
+            self._report(30)
             # extract audio transcript from recording with OpenAI Whisper
             audio_file_list = sorted([fname for fname in os.listdir(tmpdirname) if fname.startswith("out_")])
             increment_step = 70 // len(audio_file_list)
@@ -127,7 +131,7 @@ class Summarize:
                 except Exception as e:
                     raise Exception(f"Failed to create transcription: {e}")
                 progress += increment_step
-                self.result_queue.put(progress)
+                self._report(progress)
         self.transcript = transcript
         return transcript
 
