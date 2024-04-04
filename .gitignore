@@ -1,0 +1,9 @@
+venv
+.idea
+build
+dist
+*.egg-info
+.vscode
+__pycache__
+pyenv
+.DS_Store
