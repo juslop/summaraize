@@ -1,8 +1,9 @@
 # minutes
 
 A Python library for analyzing meeting/event video recordings with cloud hosted AI.
-![minutes-screenshot-1](https://github.com/juslop/minutes/assets/1512110/dbe5bd12-36f8-4d2d-9e34-5a037fea7b7b)
-![minutes-screenshot-2](https://github.com/juslop/minutes/assets/1512110/0f154418-41e9-4b5c-8e29-f75c557924f4)
+![minutes-screenshot-1](https://github.com/juslop/minutes/assets/1512110/55f3a7ee-f743-4c08-a328-50bdb7180ab3)
+![minutes-screenshot-2](https://github.com/juslop/minutes/assets/1512110/52507fa5-3614-4169-930c-783eb2601186)
+
 
 Save time and enhance efficiency by using AI to generate summaries, battle cards, meeting minutes, 
 sales arguments and action item lists directly from recordings.
