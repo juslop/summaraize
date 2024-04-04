@@ -1,4 +1,4 @@
-# minutes
+# ai-minutes
 
 A Python library for analyzing meeting/event video recordings with cloud hosted AI.
 ![minutes-screenshot-1](https://github.com/juslop/minutes/assets/1512110/9e390eb2-05c9-466f-b05e-c622ddb0b3a8)
@@ -40,7 +40,7 @@ Tamil, Thai, Turkish, Ukrainian, Urdu, Vietnamese, and Welsh.
 ## Install Application
 
 ```bash
-python -m pip install minutes
+python -m pip install ai-minutes
 ```
 
 ## Install FFmpeg
@@ -60,7 +60,7 @@ https://phoenixnap.com/kb/ffmpeg-windows
 ## Run
 
 ```bash
-python -m minutes
+python -m ai-minutes
 ```
 
 ## UI themes
@@ -71,11 +71,11 @@ https://ttkbootstrap.readthedocs.io/en/latest/themes/
 list available themes:
 
 ```bash
-python -m minutes -h
+python -m ai-minutes -h
 ```
 
 use a theme by giving theme name as an argument:
 
 ```bash
-python -m minutes cyborg
+python -m ai-minutes cyborg
 ```
