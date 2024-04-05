@@ -1,3 +1,4 @@
+# pylint: disable-all
 import re
 import tkinter.font as tkfont
 import tkinter.scrolledtext as tkscroll

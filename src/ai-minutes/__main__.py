@@ -1,14 +1,20 @@
+"""
+Module enables running package with pck name
+"""
 import argparse
 from .ui import App
 
 
 def main():
+    """
+    run ai-minutes app
+    """
     ttkbootstrap_themes = ['cosmo', 'flatly', 'litera', 'minty', 'lumen', 'sandstone',
                            'yeti', 'pulse', 'united', 'morph', 'journal', 'darkly',
                            'superhero', 'solar', 'cyborg', 'vapor', 'simplex', 'cerculean']
     parser = argparse.ArgumentParser(
         prog='Summarize Meetings',
-        description='Create summaries and answer questions from the recordings of your meetings with ChatGPT.',
+        description='Create summaries from the recordings of your meetings with ChatGPT.',
         epilog='Save time by skipping listening to meeting recordings or attending meetings',
         formatter_class=argparse.ArgumentDefaultsHelpFormatter
     )

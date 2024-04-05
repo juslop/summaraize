@@ -1,3 +1,6 @@
+"""Texts to show in UI elements"""
+# pylint: disable=invalid-name
+
 ffmpeg_missing_text = """
 This application requires ffmpeg to be installed and
 the directory containing ffmpeg executable needs
@@ -49,7 +52,8 @@ Summarize all sales key arguments.
 Highlight the benefits over competition."
 """
 
-# Supported languages from: https://platform.openai.com/docs/guides/speech-to-text/supported-languages
+# Supported languages from:
+# https://platform.openai.com/docs/guides/speech-to-text/supported-languages
 whisper_languages = {'Afrikaans': 'af', 'Arabic': 'ar', 'Armenian': 'hy',
                      'Azerbaijani': 'az', 'Belarusian': 'be', 'Bosnian': 'bs',
                      'Bulgarian': 'bg', 'Chinese': 'zh', 'Croatian': 'hr', 'Czech': 'cs',
