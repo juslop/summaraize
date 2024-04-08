@@ -69,6 +69,28 @@ Note: Tkinter package name varies between distros.
 python -m summaraize
 ```
 
+## Usage
+
+1. Application will ask for OpenAI API key. Provide the API key
+   - alternatively set OPENAI_API_KEY environment variable
+2. Application will ask to select language and video recording file
+   - video recording file is processed into a text transcipt
+   - this may take several minutes
+4. Application will ask a prompt to instruct ChatGPT4-turbo to extract the information from the transcript
+   - this is called prompt engineering
+   - try different prompts to see what works and what not
+   - after prompt is ready, application will deliver prompt and the transcript to ChatGPT
+   - creating summary in most cases takes less than a minute
+5. Application will show the ChatGPT4-turbo created summary
+   - you can copy the summary to clipboard or save the summary to a file. ChatGPT answers in markdown
+     (md) format. You can ask bulleted or numbered lists and so on.
+   - make a new summary by returning to summary view
+   - application will answer in the language you selected unless you instruct otherwise in prompt
+   - the application user interface texts are only in english
+6. Close the application by closing the window
+   - note application will not save the text transcript
+   - to analyze other recording file, restart the application
+
 ## UI themes
 
 Application support UI themes from:
