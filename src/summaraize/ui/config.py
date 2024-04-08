@@ -1,4 +1,3 @@
-"""Texts to show in UI elements"""
 # pylint: disable=invalid-name
 
 ffmpeg_missing_text = """

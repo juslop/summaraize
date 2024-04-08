@@ -1,19 +1,21 @@
-"""ui for ai-minutes"""
-
 import sys
 import queue
 import threading
 import logging
 import dataclasses
 import ttkbootstrap as ttk
+from .ffmpeg_error_page import FfmpegErrorPage
+from .api_key_page import ApiKeyPage
+from .upload_recording_page import UploadRecordingPage
+from .summarize_page import SummarisePage
+from .show_summary_page import ShowSummaryPage
 from ..summarize import Summarize
-from .pages import (
-    FfmpegErrorPage,
-    ApiKeyPage,
-    UploadRecordingPage
-)
 
 logger = logging.getLogger(__name__)
+PAGES = {x.__name__:x for x in
+         [FfmpegErrorPage, UploadRecordingPage,
+          SummarisePage, ShowSummaryPage,
+          ApiKeyPage]}
 
 
 @dataclasses.dataclass
@@ -86,7 +88,7 @@ class App(ttk.Window):
         btn_style.configure("TButton", font=("Helvetica", 16, "bold"))
         try:
             self.summarize.check_ffmpeg_present()
-        except Exception:
+        except RuntimeError:
             self.switch_frame(FfmpegErrorPage)
             return
         self.params = Params()
@@ -94,12 +96,18 @@ class App(ttk.Window):
         self.worker_thread.start()
 
         if self.summarize.client is None:
-            self.switch_frame(ApiKeyPage)
+            self.switch_frame("ApiKeyPage")
         else:
-            self.switch_frame(UploadRecordingPage)
+            self.switch_frame("UploadRecordingPage")
 
-    def switch_frame(self, frame_class: type(ttk.Frame)) -> None:
+    def switch_frame(self, frame_class_name: str) -> None:
         """Destroys current frame and replaces it with a new one."""
+        try:
+            frame_class = PAGES[frame_class_name]
+        except KeyError:
+            # pylint: disable=logging-fstring-interpolation
+            logger.error(f"unknown page {frame_class_name}")
+            sys.exit(1)
         new_frame = frame_class(self)
         if self._frame is not None:
             self._frame.destroy()

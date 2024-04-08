@@ -19,7 +19,7 @@ def main():
         formatter_class=argparse.ArgumentDefaultsHelpFormatter
     )
     parser.add_argument('theme', nargs='?',
-                        choices=ttkbootstrap_themes, default="lumen",
+                        choices=ttkbootstrap_themes, default="sandstone",
                         help="ttkbootstrap theme, (default: %(default)s)")
     args = parser.parse_args()
     app = App(args.theme)

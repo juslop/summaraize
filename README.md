@@ -1,6 +1,8 @@
-# ai-minutes
+![publish workflow](https://github.com/summarize/actions/workflows/python-publish.yml/badge.svg)
 
-A Python library for analyzing meeting/event video recordings with cloud hosted AI.
+# SummarAIze
+
+A Python library for analyzing and summarizing meeting/event video recordings with cloud hosted AI.
 ![minutes-screenshot-1](https://github.com/juslop/minutes/assets/1512110/9e390eb2-05c9-466f-b05e-c622ddb0b3a8)
 ![minutes-screenshot-2](https://github.com/juslop/minutes/assets/1512110/05e7b7ef-d61d-4a0a-be98-e6ee90739e3c)
 
@@ -40,7 +42,7 @@ Tamil, Thai, Turkish, Ukrainian, Urdu, Vietnamese, and Welsh.
 ## Install Application
 
 ```bash
-python -m pip install ai-minutes
+python -m pip install summaraize
 ```
 
 ## Install FFmpeg
@@ -56,11 +58,17 @@ brew install ffmpeg
 Follow instructions in this arcticle:
 https://phoenixnap.com/kb/ffmpeg-windows
 
+**Linux**
+
+FFmpeg: https://ffmpeg.org//download.html#build-linux
+
+Many Linux python distributions lack tkinter. Use distro package manager to install.
+Note: Tkinter package name varies between distros.
 
 ## Run
 
 ```bash
-python -m ai-minutes
+python -m summaraize
 ```
 
 ## UI themes
@@ -71,11 +79,11 @@ https://ttkbootstrap.readthedocs.io/en/latest/themes/
 list available themes:
 
 ```bash
-python -m ai-minutes -h
+python -m summaraize -h
 ```
 
 use a theme by giving theme name as an argument:
 
 ```bash
-python -m ai-minutes cyborg
+python -m summaraize cyborg
 ```

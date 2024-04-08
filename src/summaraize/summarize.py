@@ -1,11 +1,9 @@
-"""
-Module to analyze meeting recording with AI
-"""
 import queue
 from tempfile import TemporaryDirectory
 from subprocess import Popen, PIPE
 import os
 import logging
+from typing import Union
 from openai import OpenAI, AuthenticationError
 
 SYSTEM_MESSAGE = """
@@ -25,14 +23,14 @@ class Summarize:
     FFmpeg needs to be installed and set in path
     """
     def __init__(self,
-        task_queue: queue.Queue | None = None,
-        result_queue:queue.Queue | None = None
+        task_queue: Union[queue.Queue, None] = None,
+        result_queue:Union[queue.Queue, None] = None
     ) -> None:
         self.task_queue = task_queue
         self.result_queue = result_queue
         self.running = True
         self.transcript = ""
-        self.client: OpenAI | None = None
+        self.client: Union[OpenAI, None] = None
         if os.environ.get("OPENAI_API_KEY") is not None:
             try:
                 client = OpenAI()

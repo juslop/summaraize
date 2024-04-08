@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 long_description = """
-A Python library for analyzing meeting/event video recordings with cloud hosted AI.
+SummarAIze is a Python library for analyzing meeting/event video recordings with cloud hosted AI.
 
 Save time and enhance efficiency by using AI to generate summaries, battle cards, meeting minutes, 
 sales arguments and action item lists directly from recordings.
@@ -39,7 +39,7 @@ Tamil, Thai, Turkish, Ukrainian, Urdu, Vietnamese, and Welsh.
 ## Install Application
 
 ```python
-python -m pip install ai-minutes
+python -m pip install summaraize
 ```
 
 ## Install FFmpeg
@@ -55,11 +55,17 @@ brew install ffmpeg
 Follow instructions in this arcticle:
 https://phoenixnap.com/kb/ffmpeg-windows
 
+**Linux**
+
+FFmpeg: https://ffmpeg.org//download.html#build-linux
+
+Many Linux python distributions lack tkinter. Use distro package manager to install.
+Note: Tkinter package name varies between distros.
 
 ## Run
 
 ```python
-python -m ai-minutes
+python -m summaraize
 ```
 
 ## UI themes
@@ -70,20 +76,20 @@ https://ttkbootstrap.readthedocs.io/en/latest/themes/
 list available themes:
 
 ```python
-python -m ai-minutes -h
+python -m summaraize -h
 ```
 
 use a theme by giving theme name as an argument:
 
 ```python
-python -m ai-minutes cyborg
+python -m summaraize cyborg
 ```
 
 """
 
 setup(
     name="summaraize",
-    version="0.0",
+    version="0.1",
     author="Jussi Löppönen",
     description="A Python library for analyzing meeting/event video recordings with cloud hosted AI.",
     long_description=long_description,
@@ -93,7 +99,7 @@ setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    url="https://github.com/juslop/ai-minutes",
+    url="https://github.com/juslop/summaraize",
     packages=find_packages(where="src"),
     package_dir = {"": "src"},
     install_requires=["openai", "ttkbootstrap"],
