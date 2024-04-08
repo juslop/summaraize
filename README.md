@@ -1,5 +1,3 @@
-![publish workflow](https://github.com/summaraize/actions/workflows/python-publish.yml/badge.svg)
-
 # SummarAIze
 
 A Python library for analyzing and summarizing meeting/event video recordings with cloud hosted AI.
