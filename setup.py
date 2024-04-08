@@ -82,8 +82,8 @@ python -m ai-minutes cyborg
 """
 
 setup(
-    name="ai-minutes",
-    version="1.0",
+    name="summaraize",
+    version="0.0",
     author="Jussi Löppönen",
     description="A Python library for analyzing meeting/event video recordings with cloud hosted AI.",
     long_description=long_description,
