@@ -1,4 +1,4 @@
-![publish workflow](https://github.com/summarize/actions/workflows/python-publish.yml/badge.svg)
+![publish workflow](https://github.com/summaraize/actions/workflows/python-publish.yml/badge.svg)
 
 # SummarAIze
 
