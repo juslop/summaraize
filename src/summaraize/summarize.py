@@ -18,9 +18,11 @@ logger = logging.getLogger(__name__)
 
 class Summarize:
     """
-    Convert a video recording to a summary transcript and use the OpenAI API to
-    analyze it.
-    FFmpeg needs to be installed and set in path
+    Convert a video recording to a text transcript with FFmpeg locally
+    and OpenAI Whisper.
+    Create summaries based on user prompt and transcript with
+    OpenAI ChatGPT4-turbo.
+    FFmpeg needs to be installed and set in path.
     """
     def __init__(self,
         task_queue: Union[queue.Queue, None] = None,

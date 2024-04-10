@@ -12,6 +12,7 @@ from .show_summary_page import ShowSummaryPage
 from ..summarize import Summarize
 
 logger = logging.getLogger(__name__)
+# helper to avoid circular imports
 PAGES = {x.__name__:x for x in
          [FfmpegErrorPage, UploadRecordingPage,
           SummarisePage, ShowSummaryPage,
@@ -82,31 +83,30 @@ class App(ttk.Window):
             logger.error("Failed to contact OpenAI: %s", str(e))
             sys.exit(1)
         self.title('Summarize Transcript')
-        self.geometry("700x800")
+        self.geometry("800x800")
         self._frame = None
         btn_style = ttk.Style()
         btn_style.configure("TButton", font=("Helvetica", 16, "bold"))
         try:
             self.summarize.check_ffmpeg_present()
         except RuntimeError:
-            self.switch_frame(FfmpegErrorPage)
+            self.switch_frame(FfmpegErrorPage.__name__)
             return
         self.params = Params()
         self.worker_thread = threading.Thread(target=self.summarize.run)
         self.worker_thread.start()
 
         if self.summarize.client is None:
-            self.switch_frame("ApiKeyPage")
+            self.switch_frame(ApiKeyPage.__name__)
         else:
-            self.switch_frame("UploadRecordingPage")
+            self.switch_frame(UploadRecordingPage.__name__)
 
     def switch_frame(self, frame_class_name: str) -> None:
         """Destroys current frame and replaces it with a new one."""
         try:
             frame_class = PAGES[frame_class_name]
         except KeyError:
-            # pylint: disable=logging-fstring-interpolation
-            logger.error(f"unknown page {frame_class_name}")
+            logger.error("unknown page %s", frame_class_name)
             sys.exit(1)
         new_frame = frame_class(self)
         if self._frame is not None:

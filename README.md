@@ -36,7 +36,7 @@ Tamil, Thai, Turkish, Ukrainian, Urdu, Vietnamese, and Welsh.
 
 - Ffmpeg needs to be installed and set in path. https://ffmpeg.org
 - OpenAI API key to access Whisper and GPT4-Turbo models. https://platform.openai.com/docs/quickstart
-- Python3.7 or newer
+- Python3.10 or newer
 
 ## Install Application
 

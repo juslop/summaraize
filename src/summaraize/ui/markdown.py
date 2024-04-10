@@ -1,4 +1,8 @@
 # pylint: disable-all
+"""
+Unchanged from:
+https://stackoverflow.com/questions/35733300/how-to-show-markdown-formatted-text-in-tkinter
+"""
 import re
 import tkinter.font as tkfont
 import tkinter.scrolledtext as tkscroll
@@ -6,7 +10,6 @@ import tkinter.scrolledtext as tkscroll
 
 class SimpleMarkdownText(tkscroll.ScrolledText):
     """
-    https://stackoverflow.com/questions/35733300/how-to-show-markdown-formatted-text-in-tkinter
     Really basic Markdown display. Thanks to Bryan Oakley's RichText:
     https://stackoverflow.com/a/63105641/79125
     """

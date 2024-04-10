@@ -6,7 +6,6 @@ class Spinner(tk.Label):
     """
     # pylint: disable=dangerous-default-value
     def __init__(self, master, cnf={}, **kw):
-        # pylint: disable=too-many-function-args
         tk.Label.__init__(self, master, cnf, **kw)
         self._spinner = ['|', '/', '-', '\\']
         self._len_spinner = len(self._spinner)
