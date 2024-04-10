@@ -72,7 +72,6 @@ class UploadRecordingPage(ttk.Frame):
             self.progress['value'] = 0
             self.selector_btn["state"] = "normal"
             self.spinner.config(text="")
-            self.file_path = ""
             if isinstance(result, Exception):
                 Messagebox.show_error(
                     f"Creating Transcript of {self.file_path} failed.\nError: {result}",
@@ -81,3 +80,4 @@ class UploadRecordingPage(ttk.Frame):
                 Messagebox.show_error(
                     "Creating Transcript failed.\nError: Internal Server Error",
                     "Failed to create transcript", alert=True, width=200)
+            self.file_path = ""

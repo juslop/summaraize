@@ -1,5 +1,5 @@
 """
-Module enables running package with pck name
+Module enables running package with pkg name
 """
 import argparse
 from .ui import App
@@ -24,8 +24,9 @@ def main():
     args = parser.parse_args()
     app = App(args.theme)
     app.mainloop()
-    app.task_queue.put(None)
-    app.worker_thread.join()
+    if app.task_queue is not None:
+        app.task_queue.put(None)
+        app.worker_thread.join()
 
 
 if __name__ == '__main__':

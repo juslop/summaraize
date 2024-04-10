@@ -72,4 +72,4 @@ class SummarisePage(ttk.Frame):
                 Messagebox.show_error(
                     f"Internal Server Error: {type(result)} rxd from queue",
                     "Failed to create summary", alert=True, width=200)
-            self.master.switch_frame(SummarisePage)
+            self.master.switch_frame(SummarisePage.__name__)
