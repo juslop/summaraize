@@ -1,6 +1,7 @@
-# pylint: disable=invalid-name
-
-ffmpeg_missing_text = """
+"""
+UI texts
+"""
+FFMPEG_MISSING_TEXT = """
 This application requires ffmpeg to be installed and
 the directory containing ffmpeg executable needs
 to be on the system path.
@@ -8,7 +9,7 @@ to be on the system path.
 Please download and install from:
 https://ffmpeg.org
 """
-api_key_label_text = """
+API_KEY_LABEL_TEXT = """
 OpenAI API key is required.
 
 Instructions to create an API key can be found from:
@@ -16,7 +17,7 @@ https://platform.openai.com/docs/quickstart?context=python
 
 Exporting api key into environment variables skips this manual input phase
 """
-select_video_label_text = """
+SELECT_VIDEO_LABEL_TEXT = """
 Choose the video recording and the language used in the recording.
 
 Application extracts audio track from video recording with FFmpeg and
@@ -33,7 +34,7 @@ https://ffmpeg.org
 on English speech recognition."
 https://openai.com/research/whisper
 """
-prompt_template_text = """
+PROMPT_TEMPLATE_TEXT = """
 Examples:
 
 "Hello, I have a transcript from a [type of event/meeting/discussion,
@@ -53,7 +54,7 @@ Highlight the benefits over competition."
 
 # Supported languages from:
 # https://platform.openai.com/docs/guides/speech-to-text/supported-languages
-whisper_languages = {'Afrikaans': 'af', 'Arabic': 'ar', 'Armenian': 'hy',
+WHISPER_LANGUAGES = {'Afrikaans': 'af', 'Arabic': 'ar', 'Armenian': 'hy',
                      'Azerbaijani': 'az', 'Belarusian': 'be', 'Bosnian': 'bs',
                      'Bulgarian': 'bg', 'Chinese': 'zh', 'Croatian': 'hr', 'Czech': 'cs',
                      'Danish': 'da', 'English': 'en', 'Estonian': 'et', 'Finnish': 'fi',

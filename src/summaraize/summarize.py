@@ -156,14 +156,14 @@ class Summarize:
         """
         transcript = ""
         with TemporaryDirectory(ignore_cleanup_errors=True) as tmpdirname:
-            self.result_queue.put(5)
+            self._report(("Extracting audio track", 5))
             audiofile = os.path.join(tmpdirname, "audio_track.m4a")
             self._extract(video_file_path, audiofile)
-            self._report(15)
+            self._report(("Chunking audio track", 15))
             # audio needs to be chunked to match Whisper model context window
             outfile = os.path.join(tmpdirname, "out_%03d.m4a")
             self._chunk(audiofile, outfile, chunk_time)
-            self._report(30)
+            self._report(("Converting audio to text", 30))
             transcript = self._speech_to_text(tmpdirname, language)
         self.transcript = transcript
         return transcript
