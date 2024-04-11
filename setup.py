@@ -111,7 +111,7 @@ python -m summaraize cyborg
 
 setup(
     name="summaraize",
-    version="0.3",
+    version="0.4",
     author="Jussi Löppönen",
     description="Analyze event video recordings with cloud hosted AI.",
     long_description=long_description,
