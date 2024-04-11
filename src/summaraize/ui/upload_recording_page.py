@@ -5,7 +5,7 @@ from tkinter import filedialog
 import ttkbootstrap as ttk
 from ttkbootstrap.dialogs.dialogs import Messagebox, MessageDialog
 from .spinner import Spinner
-from .config import whisper_languages, select_video_label_text
+from .config import WHISPER_LANGUAGES, SELECT_VIDEO_LABEL_TEXT
 if TYPE_CHECKING:
     from .ui import App
 
@@ -19,11 +19,10 @@ class UploadRecordingPage(ttk.Frame):
         self.selector_btn.pack(pady=10)
         self.language_var = tk.StringVar()
         ttk.Label(self, text="Recording Language").pack(padx=10, pady=5)
-        ls = ttk.OptionMenu(self, self.language_var, "English", *whisper_languages.keys())
+        ls = ttk.OptionMenu(self, self.language_var, "English", *WHISPER_LANGUAGES.keys())
         ls.pack(padx=10, pady=5)
-        ttk.Label(self, text=select_video_label_text).pack(pady=10, padx=5)
-        self.spinner = Spinner(self, text="", font=("Helvetica", 14))
-        self.spinner.pack(pady=5, padx=5)
+        ttk.Label(self, text=SELECT_VIDEO_LABEL_TEXT).pack(pady=10, padx=5)
+        self.spinner = Spinner(self)
         self.progress = ttk.Progressbar(self, orient="horizontal", length=400, mode="determinate")
         self.progress.pack(pady=20)
         self.progress['value'] = 0
@@ -50,28 +49,31 @@ class UploadRecordingPage(ttk.Frame):
         self.master.params.language = self.language_var.get()
         # signature: convert(file_path, language=sel_lan, chunk=secs | default])
         task_item = ("convert", (self.file_path,),
-                     {"language": whisper_languages[self.master.params.language]})
+                     {"language": WHISPER_LANGUAGES[self.master.params.language]})
         self.master.task_queue.put(task_item)
-        self.after(200, lambda: self.process_queue(0))
+        self.after(200, lambda: self.poll_progress(0))
 
-    def process_queue(self, counter):
-        # pylint: disable=R0801
+    def poll_progress(self, counter):
         self.spinner.spin(counter)
         try:
             result = self.master.result_queue.get_nowait()
         except queue.Empty:
-            self.after(200, lambda: self.process_queue(counter + 1))
+            self.after(200, lambda: self.poll_progress(counter + 1))
             return
         if isinstance(result, int):
             self.progress['value'] = result
-            self.after(200, lambda: self.process_queue(counter + 1))
+            self.after(200, lambda: self.poll_progress(counter + 1))
+        elif isinstance(result, tuple):
+            self.spinner.set_text(result[0])
+            self.progress['value'] = result[1]
+            self.after(200, lambda: self.poll_progress(counter + 1))
         elif isinstance(result, str):
             self.master.params.transcript = result
             self.master.switch_frame("SummarisePage")
         else:
             self.progress['value'] = 0
             self.selector_btn["state"] = "normal"
-            self.spinner.config(text="")
+            self.spinner.stop()
             if isinstance(result, Exception):
                 Messagebox.show_error(
                     f"Creating Transcript of {self.file_path} failed.\nError: {result}",

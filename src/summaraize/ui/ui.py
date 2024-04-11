@@ -21,7 +21,6 @@ PAGES = {x.__name__:x for x in
 
 @dataclasses.dataclass
 class Params:
-    # pylint: disable=missing-function-docstring
     """
     Container for app params
     """

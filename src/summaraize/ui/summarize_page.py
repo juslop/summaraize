@@ -4,7 +4,7 @@ import tkinter.scrolledtext as tkscrolled
 import ttkbootstrap as ttk
 from ttkbootstrap.dialogs.dialogs import Messagebox
 from .spinner import Spinner
-from .config import prompt_template_text
+from .config import PROMPT_TEMPLATE_TEXT
 if TYPE_CHECKING:
     from .ui import App
 
@@ -25,12 +25,11 @@ class SummarisePage(ttk.Frame):
             command=self.start_summarization,
             style="TButton")
         self.sum_btn.pack(pady=10)
-        self.spinner = Spinner(self, text="", font=("Helvetica", 14))
-        self.spinner.pack(pady=5, padx=5)
+        self.spinner = Spinner(self)
         self.progress = ttk.Progressbar(self, orient="horizontal", length=200, mode="determinate")
         self.progress.pack(pady=10)
         self.prompts = ttk.Text(self, width=40, height=20, wrap="word")
-        self.prompts.insert(1.0, master.params.prompt_history + prompt_template_text)
+        self.prompts.insert(1.0, master.params.prompt_history + PROMPT_TEMPLATE_TEXT)
         self.prompts.pack(expand=True, fill="both")
         self.prompts.configure(
             state="disabled",
@@ -63,7 +62,7 @@ class SummarisePage(ttk.Frame):
         else:
             self.progress['value'] = 0
             self.sum_btn["state"] = "normal"
-            self.spinner.config(text="")
+            self.spinner.stop()
             if isinstance(result, Exception):
                 Messagebox.show_error(
                     f"Error: {str(result)}", "Failed to create summary",

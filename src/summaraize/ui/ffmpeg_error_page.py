@@ -1,7 +1,7 @@
 from typing import TYPE_CHECKING
 import sys
 import ttkbootstrap as ttk
-from .config import ffmpeg_missing_text
+from .config import FFMPEG_MISSING_TEXT
 if TYPE_CHECKING:
     from .ui import App
 
@@ -11,7 +11,7 @@ class FfmpegErrorPage(ttk.Frame):
     def __init__(self, master: 'App'):
         super().__init__(master)
         ttk.Label(
-            self, text=ffmpeg_missing_text,
+            self, text=FFMPEG_MISSING_TEXT,
             font=("Helvetica", 24)).pack(pady=20, padx=20)
         ttk.Button(self, text="Exit", command=self.exit,
                    width=20, style="TButton").pack(pady=40, padx=10)

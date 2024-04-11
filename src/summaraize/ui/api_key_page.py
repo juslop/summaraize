@@ -1,7 +1,7 @@
 from typing import TYPE_CHECKING
 import ttkbootstrap as ttk
 from ttkbootstrap.dialogs.dialogs import Messagebox
-from .config import api_key_label_text
+from .config import API_KEY_LABEL_TEXT
 if TYPE_CHECKING:
     from .ui import App
 
@@ -15,7 +15,7 @@ class ApiKeyPage(ttk.Frame):
         self.api_key_entry.pack()
         ttk.Button(self, text="Set", command=self.save_api_key,
                    width=20, style="TButton").pack(pady=40, padx=10)
-        ttk.Label(self, text=api_key_label_text).pack(pady=10, padx=5)
+        ttk.Label(self, text=API_KEY_LABEL_TEXT).pack(pady=10, padx=5)
         self.master: 'App' = master
 
     def save_api_key(self):
